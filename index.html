@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أحبك</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Cairo', sans-serif;
+      background: url('FFF.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(3px) contrast(1.2);
+      mask-image: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5) 0px,
+        rgba(0,0,0,0.5) 1px,
+        rgba(0,0,0,0.1) 2px,
+        rgba(0,0,0,0.1) 3px
+      );
+      z-index: 1;
+    }
+
+    .text-box {
+      position: relative;
+      z-index: 2;
+      color: #8B0000;
+      text-shadow: 0 0 10px darkred;
+      font-size: 18px;
+      line-height: 2.2;
+      margin: 60px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 8px darkred; }
+      50% { text-shadow: 0 0 16px darkred; }
+    }
+
+    .line {
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .line:nth-child(1) { animation-delay: 0s; }
+    .line:nth-child(2) { animation-delay: 2s; }
+    .line:nth-child(3) { animation-delay: 4s; }
+    .line:nth-child(4) { animation-delay: 6s; }
+    .line:nth-child(5) { animation-delay: 8s; }
+    .line:nth-child(6) { animation-delay: 10s; }
+    .line:nth-child(7) { animation-delay: 12s; }
+    .line:nth-child(8) { animation-delay: 14s; }
+    .line:nth-child(9) { animation-delay: 16s; }
+    .line:nth-child(10) { animation-delay: 18s; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .button-container {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      display: flex;
+      gap: 10px;
+      z-index: 999;
+      animation: fadeBtns 2s ease-in forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeBtns {
+      to { opacity: 1; }
+    }
+
+    .creator-btn {
+      background-color: rgba(139, 0, 0, 0.85);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 0 10px darkred;
+      transition: background-color 0.3s ease;
+    }
+
+    .creator-btn:hover {
+      background-color: #a30000;
+    }
+
+    .heart {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: fall 6s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -6px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -6px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10%) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="text-box">
+    <div class="line">احبك:</div>
+    <div class="line">ومن حبك خسرت اغلى من اصحاب</div>
+    <div class="line">اذا عاتبوني فيك عتابهم ما ابيه</div>
+    <div class="line">أحبك ولا تسأل حبيبي عن الاسباب</div>
+    <div class="line">انا لو اعرف اسباب حبك قدرت انهيه</div>
+    <div class="line">الا يمعرض رجل مغليك للمرقاب</div>
+    <div class="line">اثر بالطوال تفرج الهم يا راعيه</div>
+    <div class="line">الا بسألك هوا صحيح الهوا غلاب</div>
+    <div class="line">انا ليت ربي ما خلق بالغرام غياب</div>
+    <div class="line">واذا في فرقا طاري الحب... لا نطريه♥️🫀</div>
+  </div>
+
+  <!-- زرّي الموسيقى والمنشئ -->
+  <div class="button-container">
+    <button class="creator-btn" onclick="document.getElementById('myAudio').play()">ᴘʟᴀʏ ᴍᴜꜱɪᴄ🥀</button>
+    <button class="creator-btn" onclick="window.open('https://haita.justhost.ly', '_blank')">المنشئ</button>
+  </div>
+
+  <audio id="myAudio">
+    <source src="SSS.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+  </audio>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 1500);
+  </script>
+
+</body>
+</html>
