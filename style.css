@@ -1,0 +1,67 @@
+.floating-heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: darkred;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 12px rgba(139, 0, 0, 0.5);
+  animation: heartFade 2.2s ease-out forwards; /* ← زودنا السرعة */
+}
+
+@keyframes heartFade {
+  0% {
+    transform: scale(1) rotate(45deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2) rotate(45deg);
+    opacity: 0;
+  }
+}
+/* --- تأثير القلوب عند الضغط/الحركة --- */
+.floating-heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: darkred;
+  transform: rotate(45deg);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+  animation: heartFade 1s ease-out forwards;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: darkred;
+  border-radius: 50%;
+}
+
+.floating-heart::before {
+  top: -9px;
+  left: 0;
+}
+
+.floating-heart::after {
+  left: -9px;
+  top: 0;
+}
+
+@keyframes heartFade {
+  0% {
+    transform: scale(1) rotate(45deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.8) rotate(45deg);
+    opacity: 0;
+  }
+}
